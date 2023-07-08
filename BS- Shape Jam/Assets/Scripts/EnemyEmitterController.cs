@@ -10,9 +10,11 @@ public class EnemyEmitterController : MonoBehaviour
     // nextSpawn is given an initial value so that the one 
     // in the scene doesn't get doubled up with an immediate spawn
     public GameObject Enemy;
+    public GameObject giantEnemy;
     private PlayerControls playerController;
     public float spawnRate;
     private float nextSpawn = 5.0f;
+    public int currentLevel;
 
     void Start()
     {
@@ -42,6 +44,10 @@ public class EnemyEmitterController : MonoBehaviour
                 Vector3 enemyPosition = new Vector3(randomX, 6, 0);
                 transform.position = enemyPosition;
                 Instantiate(Enemy, transform.position, transform.rotation);
+
+                if(currentLevel >= 7){
+                    Instantiate(giantEnemy, transform.position, transform.rotation);
+                }
             }
 
             /*****************************\
